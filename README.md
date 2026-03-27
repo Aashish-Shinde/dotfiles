@@ -13,13 +13,25 @@ A professional Ubuntu terminal configuration backup including shell settings, Oh
 
 ## Quick Start
 
-### Prerequisites
+### ⚡ One-Command Installation (Recommended)
+
+```bash
+git clone https://github.com/Aashish-Shinde/dotfiles.git ~/dotfiles && cd ~/dotfiles && ./install.sh
+```
+
+That's it! The script will handle everything. Just restart your terminal after it completes.
+
+**Note:** The `~/dotfiles` directory is not needed after installation. The script will ask if you want to remove it at the end. You can safely delete it anytime with: `rm -rf ~/dotfiles`
+
+### 📋 Step-by-Step Installation (Advanced Users)
+
+#### Prerequisites
 
 - Ubuntu/Debian-based system
 - `curl` installed
 - `sudo` access
 
-### Installation
+#### Installation
 
 1. **Clone the repository:**
    ```bash
@@ -121,6 +133,14 @@ cp ~/.bashrc.backup.TIMESTAMP ~/.bashrc
 ## Reverting Installation
 
 If you want to remove all changes made by the installation script:
+
+### ⚡ One-Command Revert
+
+```bash
+cd ~/dotfiles && chmod +x revert.sh && ./revert.sh
+```
+
+### Manual Revert (Advanced Users)
 
 ```bash
 chmod +x revert.sh

@@ -112,3 +112,14 @@ echo -e "2. Update the oh-my-posh config path in ~/.bashrc:"
 echo -e "   ${GREEN}eval \"\$(oh-my-posh init bash --config '$POSH_CONFIG_DIR/cobalt2.omp.json')\"${NC}"
 echo -e "3. Set your terminal font to: ${GREEN}FiraCode Nerd Font or MesloLGS Nerd Font${NC}"
 echo -e "4. Restart your terminal\n"
+
+# Optional: Clean up the dotfiles directory
+echo -e "${YELLOW}The ~/dotfiles directory is no longer needed after installation.${NC}"
+echo -e "${YELLOW}Remove it? (yes/no):${NC}"
+read -r cleanup
+if [ "$cleanup" = "yes" ]; then
+    rm -rf "$SCRIPT_DIR"
+    echo -e "${GREEN}✓ ~/dotfiles directory removed${NC}"
+else
+    echo -e "${GREEN}✓ ~/dotfiles directory kept for future reference${NC}"
+fi
