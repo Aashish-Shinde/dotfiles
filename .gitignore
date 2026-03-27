@@ -1,0 +1,26 @@
+# Sensitive files and directories
+.ssh/
+.gnupg/
+.env
+.env.local
+*.pem
+*.key
+
+# System files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Temporary files
+*.tmp
+*.log
+
+# Node modules (if needed)
+node_modules/

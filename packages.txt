@@ -1,0 +1,11 @@
+# Essential Ubuntu packages for development environment
+build-essential
+git
+curl
+wget
+vim
+code
+mysql-client
+nodejs
+npm
+golang-go
