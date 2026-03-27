@@ -118,6 +118,24 @@ If anything goes wrong, the original `.bashrc` is backed up:
 cp ~/.bashrc.backup.TIMESTAMP ~/.bashrc
 ```
 
+## Reverting Installation
+
+If you want to remove all changes made by the installation script:
+
+```bash
+chmod +x revert.sh
+./revert.sh
+```
+
+The revert script will:
+- ✅ Remove Oh My Posh
+- ✅ Restore your original `.bashrc` from backup
+- ✅ Remove Oh My Posh theme configuration
+- ✅ Remove installed Nerd Fonts
+- ✅ Optionally remove installed packages
+
+**Note:** The script will ask for confirmation before proceeding and will offer to remove packages optionally.
+
 ## Theme Customization
 
 The Cobalt2 theme includes:
