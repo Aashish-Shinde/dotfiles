@@ -1,11 +1,11 @@
 # Essential Ubuntu packages for development environment
+unzip
 build-essential
 git
 curl
 wget
 vim
-code
 mysql-client
 nodejs
-npm
 golang-go
+fontconfig
