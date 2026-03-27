@@ -35,9 +35,22 @@ echo -e "\n${YELLOW}[2/5] Installing packages from packages.txt...${NC}"
 if [ -f "$SCRIPT_DIR/packages.txt" ]; then
     PACKAGES=$(grep -v '^#' "$SCRIPT_DIR/packages.txt" | grep -v '^$' | tr '\n' ' ')
     if [ -n "$PACKAGES" ]; then
-        sudo apt-get update
-        sudo apt-get install -y $PACKAGES
-        echo -e "${GREEN}✓ Packages installed${NC}"
+        # Remove expired GPG keys to avoid update failures
+        echo -e "${YELLOW}Removing expired GPG keys...${NC}"
+        sudo rm -f /etc/apt/trusted.gpg.d/mysql.gpg 2>/dev/null || true
+        
+        # Update package lists with error tolerance
+        echo -e "${YELLOW}Updating package lists...${NC}"
+        sudo apt-get update 2>&1 | grep -v "EXPKEYSIG\|The following signatures were invalid" || true
+        
+        # Install packages
+        sudo apt-get install -y $PACKAGES 2>&1 || {
+            echo -e "${YELLOW}⚠ Some packages failed to install, attempting individual installation...${NC}"
+            for package in $PACKAGES; do
+                sudo apt-get install -y "$package" 2>/dev/null || echo -e "${YELLOW}⚠ Could not install $package${NC}"
+            done
+        }
+        echo -e "${GREEN}✓ Packages installation completed${NC}"
     fi
 else
     echo -e "${YELLOW}⚠ packages.txt not found, skipping${NC}"

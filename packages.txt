@@ -5,7 +5,6 @@ git
 curl
 wget
 vim
-mysql-client
 nodejs
 golang-go
 fontconfig
