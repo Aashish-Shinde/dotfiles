@@ -25,6 +25,8 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo -e "\n${YELLOW}[1/5] Installing Oh My Posh...${NC}"
 if ! command -v oh-my-posh &> /dev/null; then
     curl -s https://ohmyposh.dev/install.sh | bash -s
+    # Ensure PATH is updated for current shell
+    export PATH="$HOME/.local/bin:$PATH"
     echo -e "${GREEN}✓ Oh My Posh installed${NC}"
 else
     echo -e "${GREEN}✓ Oh My Posh already installed${NC}"

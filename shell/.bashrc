@@ -154,7 +154,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH=$PATH:/home/lm-as/.local/bin
+export PATH=$PATH:$HOME/.local/bin
 
-# Oh My Posh initialization with local theme
-eval "$(oh-my-posh init bash --config "${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-posh/cobalt2.omp.json")"
+# Oh My Posh initialization with local theme (only if oh-my-posh is installed)
+if command -v oh-my-posh &> /dev/null; then
+    eval "$(oh-my-posh init bash --config "${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-posh/cobalt2.omp.json")"
+fi
